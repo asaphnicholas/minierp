@@ -1,0 +1,15 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "page": "index",
+      "routeType": "page",
+      "layout": "main"
+    },
+    {
+      "path": "/cadastro",
+      "page": "cadastro",
+      "layout": "main"
+    }
+  ]
+}

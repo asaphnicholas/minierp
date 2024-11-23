@@ -1,0 +1,11 @@
+{
+  "direct": true,
+  "type": "postgres",
+  "connection": {
+    "host": "127.0.0.1",
+    "port": 9906,
+    "user": "db_user",
+    "password": "yUxBYY4i",
+    "database": "mini_erp"
+  }
+}

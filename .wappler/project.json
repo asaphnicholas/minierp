@@ -1,0 +1,54 @@
+{
+  "projectName": "Mini ERP",
+  "styleFile": "/css/style.css",
+  "assetsFolder": "/assets",
+  "designFramework": "bootstrap5",
+  "frameworks": [
+    {
+      "name": "fontawesome_5",
+      "type": "cdn"
+    },
+    {
+      "name": "bootstrap5",
+      "type": "local"
+    },
+    {
+      "name": "appConnect",
+      "type": "local"
+    }
+  ],
+  "hostingType": "docker",
+  "projectServerModel": "node",
+  "runtime": "capacitor",
+  "webRootFolder": "/public",
+  "useRouting": true,
+  "addBase": true,
+  "routingHandler": "node",
+  "projectLinksType": "site",
+  "targets": [
+    {
+      "name": "Development",
+      "remoteURL": "http://localhost:8100",
+      "webServerPort": 8100,
+      "webServerLang": "node",
+      "targetType": "docker",
+      "webServer": "node",
+      "NodeVersion": "lts",
+      "NodeOS": "alpine",
+      "webLoggingMaxFiles": "5",
+      "webLoggingMaxFileSize": "10m",
+      "databaseLoggingMaxFiles": "5",
+      "databaseLoggingMaxFileSize": "10m",
+      "dockerTimezone": "America/Sao_Paulo",
+      "databaseType": "postgres",
+      "postgresVersion": "14.8.x",
+      "databasePort": 9906,
+      "postgres_rootName": "db_user",
+      "postgres_rootPassword": "yUxBYY4i",
+      "postgres_databaseName": "mini_erp"
+    }
+  ],
+  "activeTarget": "Development",
+  "projectType": "web",
+  "extensions": []
+}
