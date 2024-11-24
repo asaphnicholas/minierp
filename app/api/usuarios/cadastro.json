@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "$_POST": [
+      {
+        "type": "text",
+        "name": "nome"
+      },
+      {
+        "type": "text",
+        "name": "nome_empresa"
+      },
+      {
+        "type": "text",
+        "name": "funcao"
+      },
+      {
+        "type": "text",
+        "name": "email"
+      },
+      {
+        "type": "text",
+        "name": "senha"
+      },
+      {
+        "type": "text",
+        "name": "celular"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "insert_empresa",
+        "module": "dbupdater",
+        "action": "insert",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "insert",
+            "values": [
+              {
+                "table": "empresas",
+                "column": "nome",
+                "type": "text",
+                "value": "{{$_POST.nome_empresa}}"
+              }
+            ],
+            "table": "empresas",
+            "returning": "id",
+            "query": "insert into \"empresas\" (\"nome\") values (?)",
+            "params": [
+              {
+                "name": ":P1",
+                "type": "expression",
+                "value": "{{$_POST.nome_empresa}}",
+                "test": ""
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "identity",
+            "type": "text"
+          },
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "name": "insert_usuario",
+        "module": "dbupdater",
+        "action": "insert",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "insert",
+            "values": [
+              {
+                "table": "usuarios",
+                "column": "nome",
+                "type": "text",
+                "value": "{{$_POST.nome}}"
+              },
+              {
+                "table": "usuarios",
+                "column": "funcao",
+                "type": "text",
+                "value": "{{$_POST.funcao}}"
+              },
+              {
+                "table": "usuarios",
+                "column": "email",
+                "type": "text",
+                "value": "{{$_POST.email.lowercase()}}"
+              },
+              {
+                "table": "usuarios",
+                "column": "celular",
+                "type": "text",
+                "value": "{{$_POST.celular}}"
+              },
+              {
+                "table": "usuarios",
+                "column": "senha",
+                "type": "text",
+                "value": "{{$_POST.senha.sha1()}}"
+              },
+              {
+                "table": "usuarios",
+                "column": "empresa",
+                "type": "number",
+                "value": "{{insert_empresa.identity}}"
+              }
+            ],
+            "table": "usuarios",
+            "returning": "id",
+            "query": "insert into \"usuarios\" (\"celular\", \"email\", \"empresa\", \"funcao\", \"nome\", \"senha\") values (?, ?, ?, ?, ?, ?)",
+            "params": [
+              {
+                "name": ":P1",
+                "type": "expression",
+                "value": "{{$_POST.nome}}",
+                "test": ""
+              },
+              {
+                "name": ":P2",
+                "type": "expression",
+                "value": "{{$_POST.funcao}}",
+                "test": ""
+              },
+              {
+                "name": ":P3",
+                "type": "expression",
+                "value": "{{$_POST.email.lowercase()}}",
+                "test": ""
+              },
+              {
+                "name": ":P4",
+                "type": "expression",
+                "value": "{{$_POST.celular}}",
+                "test": ""
+              },
+              {
+                "name": ":P5",
+                "type": "expression",
+                "value": "{{$_POST.senha.sha1()}}",
+                "test": ""
+              },
+              {
+                "name": ":P6",
+                "type": "expression",
+                "value": "{{insert_empresa.identity}}",
+                "test": ""
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "identity",
+            "type": "text"
+          },
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ]
+      }
+    ]
+  }
+}

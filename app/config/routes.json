@@ -10,6 +10,11 @@
       "path": "/cadastro",
       "page": "cadastro",
       "layout": "main"
+    },
+    {
+      "path": "/login",
+      "page": "login",
+      "layout": "main"
     }
   ]
 }
