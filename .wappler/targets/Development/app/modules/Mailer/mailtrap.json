@@ -1,0 +1,11 @@
+{
+  "name": "mailtrap",
+  "module": "mail",
+  "action": "setup",
+  "options": {
+    "host": "sandbox.smtp.mailtrap.io",
+    "port": 2525,
+    "username": "9184929acac50d",
+    "password": "f0387c37d5abf5"
+  }
+}

@@ -113,11 +113,17 @@
                 "column": "empresa",
                 "type": "number",
                 "value": "{{insert_empresa.identity}}"
+              },
+              {
+                "table": "usuarios",
+                "column": "token",
+                "type": "text",
+                "value": "{{UUID}}"
               }
             ],
             "table": "usuarios",
             "returning": "id",
-            "query": "insert into \"usuarios\" (\"celular\", \"email\", \"empresa\", \"funcao\", \"nome\", \"senha\") values (?, ?, ?, ?, ?, ?)",
+            "query": "insert into \"usuarios\" (\"celular\", \"email\", \"empresa\", \"funcao\", \"nome\", \"senha\", \"token\") values (?, ?, ?, ?, ?, ?, ?) returning \"id\"",
             "params": [
               {
                 "name": ":P1",
@@ -153,6 +159,12 @@
                 "name": ":P6",
                 "type": "expression",
                 "value": "{{insert_empresa.identity}}",
+                "test": ""
+              },
+              {
+                "name": ":P7",
+                "type": "expression",
+                "value": "{{UUID}}",
                 "test": ""
               }
             ]

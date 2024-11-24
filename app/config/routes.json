@@ -15,6 +15,16 @@
       "path": "/login",
       "page": "login",
       "layout": "main"
+    },
+    {
+      "path": "/esqueceu_senha",
+      "page": "esqueceu_senha",
+      "layout": "main"
+    },
+    {
+      "path": "/resetar_senha/:token",
+      "page": "resetar_senha",
+      "layout": "main"
     }
   ]
 }
